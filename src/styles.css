@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Paleta de colores y fuentes para toda la app */
+:root {
+  --background: #080808;
+  --text: #f0f0f0;
+  --primary: #9e4bb7;
+  --primary-glow: rgba(158, 75, 183, 0.5);
+  --glass-bg: rgba(22, 22, 22, 0.6);
+  --font-main: 'Poppins', sans-serif;
+}
+
+/* Estilos globales y reseteo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* El contenedor de partículas es global */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}

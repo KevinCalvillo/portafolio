@@ -1,0 +1,309 @@
+/* home.component.css */
+:host::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(circle at 15% 25%, var(--primary-glow), transparent 30%),
+    radial-gradient(circle at 85% 75%, rgba(0, 150, 255, 0.3), transparent 30%);
+  z-index: -1;
+  filter: blur(100px);
+}
+
+section.home {
+  min-height: 100vh;
+  padding: 5rem 9% 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+}
+
+.home-content {
+  max-width: 600px;
+}
+
+.home-content h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.home-content h1 span {
+  color: var(--primary);
+}
+
+.home-content h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  line-height: 1.8;
+}
+
+.home-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  color: #c0c0c0;
+}
+
+/* === CÓDIGO DE IMAGEN: EFECTO GLITCH === */
+.home-img {
+  position: relative;
+  width: 28vw;
+  height: 28vw;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.home-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: grayscale(100%) contrast(1.2);
+  transition: filter 0.5s 0.2s ease-out;
+}
+
+.home-img::before,
+.home-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: url('../../../assets/img.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+
+.home-img::before {
+  background-color: #ff00c1;
+}
+
+.home-img::after {
+  background-color: #00fff9;
+}
+
+.home-img:hover img {
+  filter: grayscale(0%) contrast(1);
+}
+
+.home-img:hover::before {
+  animation: glitch-anim 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.home-img:hover::after {
+  animation: glitch-anim 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
+
+.social-icons a {
+  opacity: 0; /* Inicia invisible para la animación GSAP */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0 1rem 0 0;
+  transition: all 0.4s ease;
+}
+
+.social-icons a:hover {
+  background-color: var(--primary);
+  color: #000;
+  box-shadow: 0 0 25px var(--primary);
+  transform: translateY(-10px);
+}
+
+.btn {
+  opacity: 0; /* Inicia invisible para la animación GSAP */
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background: var(--primary);
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: translateY(-10px);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* === ANIMACIÓN DE ESCRITURA === */
+.typing-text {
+  position: relative;
+  color: var(--primary);
+  display: inline-block;
+  min-height: 1.9em;
+  vertical-align: middle;
+}
+
+.typing-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing-animation 20s infinite;
+}
+
+.typing-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: white;
+  animation: cursor-position 20s infinite, blink 0.7s infinite steps(1, start);
+}
+
+/* === KEYFRAMES DE ANIMACIONES === */
+
+@keyframes typing-animation {
+  0%, 5%, 20%, 25%, 45%, 50%, 70%, 75%, 95%, 100% {
+    width: 0;
+  }
+  10%, 15% {
+    width: 20ch;
+    content: "Full Stack Developer";
+  }
+  30%, 40% {
+    width: 12ch;
+    content: "Web Designer";
+  }
+  55%, 65% {
+    width: 17ch;
+    content: "Software Engineer";
+  }
+  80%, 90% {
+    width: 13ch;
+    content: "Script Writer";
+  }
+}
+
+@keyframes cursor-position {
+  0%, 5%, 20%, 25%, 45%, 50%, 70%, 75%, 95%, 100% {
+    left: 0;
+  }
+  10%, 15% {
+    left: 20ch;
+  }
+  30%, 40% {
+    left: 12ch;
+  }
+  55%, 65% {
+    left: 17ch;
+  }
+  80%, 90% {
+    left: 13ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    background-color: transparent;
+  }
+}
+
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 3%, 0 3%);
+  }
+  10% {
+    transform: translate(-5px, -3px);
+  }
+  20% {
+    transform: translate(5px, 3px);
+  }
+  30% {
+    transform: translate(-5px, 3px);
+    clip-path: polygon(0 84%, 100% 84%, 100% 100%, 0 100%);
+  }
+  40% {
+    transform: translate(5px, -3px);
+  }
+  50% {
+    transform: translate(-5px, 3px);
+  }
+  60% {
+    transform: translate(5px, 3px);
+    clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+  }
+  70% {
+    transform: translate(-5px, -3px);
+  }
+  80% {
+    transform: translate(5px, -3px);
+  }
+  90% {
+    transform: translate(-5px, 3px);
+  }
+  100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+/* === ESTILOS RESPONSIVOS === */
+@media (max-width: 1200px) {
+  .home-img {
+      width: 35vw;
+      height: 35vw;
+  }
+}
+
+@media (max-width: 995px) {
+  section.home {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .home-img {
+    width: 70vw;
+    height: 70vw;
+    margin-top: 4rem;
+  }
+}

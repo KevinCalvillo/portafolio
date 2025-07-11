@@ -1,0 +1,66 @@
+/* navbar.component.css */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+header.scrolled {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: var(--primary);
+  font-weight: 800;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(-5deg);
+  color: var(--text);
+}
+
+nav a {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-left: 4rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media(max-width: 995px) {
+  nav {
+    display: none;
+  }
+}
