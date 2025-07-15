@@ -1,0 +1,166 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* === ESTILOS DE LA LÍNEA DE TIEMPO === */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* La línea vertical central */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--primary);
+  opacity: 0.3;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
+
+/* Contenedor de cada evento */
+.timeline-item {
+  padding: 1rem 3rem;
+  position: relative;
+  width: 50%;
+  /* --- Preparación para la animación --- */
+  opacity: 0;
+}
+
+/* Posiciona los items impares a la izquierda */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+  /* --- Preparación para la animación --- */
+  transform: translateX(-100px);
+}
+
+/* Posiciona los items pares a la derecha */
+.timeline-item:nth-child(even) {
+  left: 50%;
+  /* --- Preparación para la animación --- */
+  transform: translateX(100px);
+}
+
+/* El punto en la línea de tiempo */
+.timeline-dot {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--background);
+  border: 4px solid var(--primary);
+  top: 2rem;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+  right: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -10px;
+}
+
+/* La tarjeta de contenido */
+.timeline-content {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+.timeline-header {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.timeline-content h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: 700;
+  text-align: left;
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #c0c0c0;
+  text-align: left;
+}
+
+.timeline-institution {
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+
+.timeline-institution h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.timeline-institution i {
+  color: var(--primary);
+  text-align: left;
+}
+
+.timeline-details {
+  list-style-position: inside;
+  padding-left: 0;
+  text-align: left;
+}
+.timeline-item:nth-child(even) .timeline-details {
+  padding-left: 1.2rem; /* Añade un poco de padding a la lista */
+}
+
+
+.timeline-details li, .timeline-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #c0c0c0;
+  text-align: left;
+}
+
+
+/* === ESTILOS RESPONSIVOS === */
+@media (max-width: 768px) {
+  /* La línea se mueve a la izquierda */
+  .timeline::after {
+    left: 20px;
+  }
+
+  /* Todos los items se mueven a un lado */
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 1rem;
+  }
+
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    left: 0;
+    text-align: left;
+    transform: translateX(100px); /* Todos vienen de la derecha */
+  }
+
+  .timeline-item:nth-child(odd) .timeline-institution {
+    justify-content: flex-start;
+  }
+
+  /* El punto siempre está a la izquierda */
+  .timeline-dot,
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: 10px;
+  }
+}

@@ -1,17 +1,4 @@
 /* home.component.css */
-:host::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background:
-    radial-gradient(circle at 15% 25%, var(--primary-glow), transparent 30%),
-    radial-gradient(circle at 85% 75%, rgba(0, 150, 255, 0.3), transparent 30%);
-  z-index: -1;
-  filter: blur(100px);
-}
 
 section.home {
   min-height: 100vh;
@@ -85,13 +72,7 @@ section.home {
   mix-blend-mode: screen;
 }
 
-.home-img::before {
-  background-color: #ff00c1;
-}
 
-.home-img::after {
-  background-color: #00fff9;
-}
 
 .home-img:hover img {
   filter: grayscale(0%) contrast(1);
@@ -106,7 +87,6 @@ section.home {
 }
 
 .social-icons a {
-  opacity: 0; /* Inicia invisible para la animación GSAP */
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -118,7 +98,6 @@ section.home {
   font-size: 1.5rem;
   color: var(--primary);
   margin: 0 1rem 0 0;
-  transition: all 0.4s ease;
 }
 
 .social-icons a:hover {
@@ -129,7 +108,6 @@ section.home {
 }
 
 .btn {
-  opacity: 0; /* Inicia invisible para la animación GSAP */
   display: inline-block;
   padding: 1rem 2.8rem;
   background: var(--primary);
@@ -139,7 +117,6 @@ section.home {
   font-weight: 600;
   letter-spacing: 1px;
   border: 2px solid transparent;
-  transition: all 0.4s ease;
   margin-top: 50px;
   position: relative;
   overflow: hidden;
@@ -206,20 +183,20 @@ section.home {
     width: 0;
   }
   10%, 15% {
-    width: 20ch;
-    content: "Full Stack Developer";
+    width: 19ch;
+    content: "Desarrollador Full Stack";
   }
   30%, 40% {
-    width: 12ch;
-    content: "Web Designer";
+    width: 15ch;
+    content: "Desarrollador Web";
   }
   55%, 65% {
-    width: 17ch;
-    content: "Software Engineer";
+    width: 19ch;
+    content: "Ingeniero en Sistemas";
   }
   80%, 90% {
-    width: 13ch;
-    content: "Script Writer";
+    width: 20ch;
+    content: "Desarrollador de Scripts";
   }
 }
 
@@ -228,16 +205,16 @@ section.home {
     left: 0;
   }
   10%, 15% {
-    left: 20ch;
+    left: 19ch;
   }
   30%, 40% {
-    left: 12ch;
+    left: 15ch;
   }
   55%, 65% {
-    left: 17ch;
+    left: 18ch;
   }
   80%, 90% {
-    left: 13ch;
+    left: 19ch;
   }
 }
 

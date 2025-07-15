@@ -1,17 +1,15 @@
-/* styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Paleta de colores y fuentes para toda la app */
 :root {
-  --background: #080808;
-  --text: #f0f0f0;
-  --primary: #9e4bb7;
-  --primary-glow: rgba(158, 75, 183, 0.5);
-  --glass-bg: rgba(22, 22, 22, 0.6);
+  --background: #111119;
+  --text: #e5e7eb;
+  --primary: #a29ee9;
+  --primary-glow: rgba(162, 158, 233, 0.4);
+  --card-bg: rgba(90, 93, 141, 0.1);
+  --glass-bg: rgba(17, 17, 25, 0.5);
   --font-main: 'Poppins', sans-serif;
 }
 
-/* Estilos globales y reseteo */
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +18,7 @@
   text-decoration: none;
   border: none;
   outline: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -28,12 +27,80 @@ body {
   overflow-x: hidden;
 }
 
-/* El contenedor de partículas es global */
-.particles-container {
+body::before {
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(circle at 15% 25%, #7c79b1, transparent 40%),
+    radial-gradient(circle at 85% 75%, #414466, transparent 40%);
   z-index: -1;
+  filter: blur(80px);
+}
+
+.section-container {
+  min-height: 100vh;
+  padding: 5rem 9% 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title span {
+  color: var(--primary);
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background: var(--primary);
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0 0.5rem;
+  transition: all 0.4s ease;
+}
+
+.social-icons a:hover {
+  background-color: var(--primary);
+  color: #000;
+  box-shadow: 0 0 25px var(--primary);
+  transform: translateY(-5px);
 }
